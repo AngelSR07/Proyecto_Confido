@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+
+    android:orientation="vertical"
+
+    android:background="@drawable/background_box_view">
+
+    <ImageButton
+        android:id="@+id/imgCloseBoxInfo"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+
+        android:layout_gravity="end"
+
+        android:src="@drawable/background_box_view_ic_close"
+        android:contentDescription="close.png"
+
+        tools:ignore="HardcodedText,TextContrastCheck"/>
+
+
+    <TextView
+        android:id="@+id/txtTitleInfo"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+
+        android:text="Femincidio"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="30sp"
+
+        android:layout_marginVertical="20dp"
+
+        tools:ignore="HardcodedText,TextContrastCheck"/>
+
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="40dp">
+
+        <TextView
+            android:id="@+id/txtDescInfo"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+
+            android:text="A continuación, te presentamos los 9 conceptos que han sido trabajado por el diario el Comercio en conjunto con el apoyo de la Defensoría del Pueblo"
+            android:textColor="#7A7A7A"
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+            android:justificationMode="inter_word"
+
+            tools:ignore="HardcodedText,TextContrastCheck"/>
+
+    </ScrollView>
+
+</LinearLayout>

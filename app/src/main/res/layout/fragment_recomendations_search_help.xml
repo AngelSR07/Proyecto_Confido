@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_recomend_search_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#DFE0E4"
+
+    tools:context=".usercase.recomendations.search_help.FragmentSearchHelp">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:background="@drawable/background_top"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintStart_toEndOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.2"
+
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+
+        android:background="@drawable/background_box_view"
+        android:padding="5dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.05"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:contentDescription="Logo_app.png"
+            android:src="@drawable/background_logo_app"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/txtNomHelp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Buscar Ayuda"
+        android:textColor="#FFF"
+        android:textSize="22sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/box_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.85"
+
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box_view"
+        android:layout_width="0dp"
+        app:layout_constraintVertical_bias="0.85"
+
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.7"
+
+        android:background="@drawable/background_box_view"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintWidth_percent="0.85">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_help"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.8"
+
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="30dp"
+
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="horizontal"
+
+            app:layout_constraintBottom_toTopOf="@+id/btnBackViewHelp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <Button
+            android:id="@+id/btnBackViewHelp"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="#7972E6"
+            app:cornerRadius="10dp"
+
+            android:padding="10dp"
+
+            android:text="Volver"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20sp"
+
+            app:icon="@drawable/background_back_arrow"
+            app:iconGravity="textStart"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.95"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406316783960",
+    "project_id": "confido-b36e9",
+    "storage_bucket": "confido-b36e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406316783960:android:141a8a2f25a75c59b86d2d",
+        "android_client_info": {
+          "package_name": "com.grupo3.confido"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406316783960-1051vh2htuq6rfdkr2vq4dbj39p295hn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqcxM2J5VxF-IDBLzbVWu9S1G_gNTInyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406316783960-1051vh2htuq6rfdkr2vq4dbj39p295hn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

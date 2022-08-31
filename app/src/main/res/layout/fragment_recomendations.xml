@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DFE0E4"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/fragment_recomend">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.45"
+
+        android:background="@drawable/background_top"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.2"
+
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+
+        android:background="@drawable/background_box_view"
+        android:padding="5dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.05"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:contentDescription="Logo_app.png"
+            android:src="@drawable/background_logo_app"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <TextView
+        android:id="@+id/txtInformation"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Recomendaciones"
+        android:textColor="#FFF"
+        android:textSize="22sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/box_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintVertical_bias="0.85"
+
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box_view"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.85"
+
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.7"
+
+        android:background="@drawable/background_box_view"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.85">
+
+        <Button
+            android:id="@+id/btnInformation"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.85"
+
+            android:layout_height="wrap_content"
+
+            app:cornerRadius="10dp"
+            android:backgroundTint="#7972E6"
+
+            android:padding="15dp"
+            android:text="Información"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.1"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+        <Button
+            android:id="@+id/btnGuide"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.85"
+
+            android:layout_height="wrap_content"
+
+            app:cornerRadius="10dp"
+            android:backgroundTint="#7972E6"
+
+            android:padding="15dp"
+            android:text="¿Qué hacer en una situación de riesgo?"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.5"
+
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.85"
+
+            android:layout_height="wrap_content"
+
+            app:cornerRadius="10dp"
+            android:backgroundTint="#7972E6"
+
+            android:padding="15dp"
+            android:text="Buscar ayuda"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.9"
+
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

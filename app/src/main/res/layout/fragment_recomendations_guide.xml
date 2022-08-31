@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/background_box_view"
+    android:orientation="vertical"
+
+    android:paddingHorizontal="10dp"
+
+    android:paddingVertical="20dp">
+
+
+
+    <ImageButton
+        android:id="@+id/imgCloseBoxWelcome"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="end"
+
+        android:background="@color/white"
+
+        android:contentDescription="close.png"
+        android:src="@drawable/background_box_view_ic_close"
+
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/txtDesc"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+
+                android:layout_marginVertical="50dp"
+
+                android:justificationMode="inter_word"
+                android:text="A continuación, te presentamos los 9 conceptos que han sido trabajado por el diario el Comercio en conjunto con el apoyo de la Defensoría del Pueblo"
+                android:textAlignment="center"
+                android:textColor="#7A7A7A"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+            <ImageView
+                android:id="@+id/Check"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/guide_check" />
+
+            <Button
+                android:id="@+id/btnNext"
+
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#7972E6"
+
+                android:padding="15dp"
+                android:text="Siguiente"
+
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                app:cornerRadius="10dp"
+
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

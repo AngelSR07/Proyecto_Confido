@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.grupo3.confido">
+
+    <!-- OBTENER UBICACIÓN PRECISA -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- ENVIAR MENSAJE -->
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <!-- PERMISO DE INTERNET -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher_logo_app"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_logo_app_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Confido"
+        tools:targetApi="31">
+        <activity
+            android:name=".usercase.menu.Menu"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Confido.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- Indicamos que la clase "Service_Message" es un servicio -->
+        <service android:name=".util.backgroundService.Service_Message"/>
+    </application>
+
+</manifest>

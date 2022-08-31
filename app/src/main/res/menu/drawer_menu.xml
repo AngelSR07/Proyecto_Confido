@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+
+        <item
+            android:title="Herramientas"
+            tools:ignore="HardcodedText,TextContrastCheck">
+            <menu>
+                <item
+                    android:id="@+id/nav_home"
+                    android:title="Inicio"
+                    android:icon="@drawable/nav_ic_home"
+                    android:checkable="true"
+                    tools:ignore="HardcodedText,TextContrastCheck"
+                    />
+
+                <item
+                    android:id="@+id/nav_contact_list"
+                    android:title="Lista de contactos"
+                    android:icon="@drawable/nav_ic_list_contact"
+                    android:checkable="true"
+                    tools:ignore="HardcodedText,TextContrastCheck"
+                    />
+
+                <item
+                    android:id="@+id/nav_configuration"
+                    android:title="Configuración"
+                    android:icon="@drawable/nav_ic_config"
+                    android:checkable="true"
+                    tools:ignore="HardcodedText,TextContrastCheck"
+                    />
+
+                <item
+                    android:id="@+id/nav_recomendations"
+                    android:title="Recomendaciones"
+                    android:icon="@drawable/nav_ic_recomendations"
+                    android:checkable="true"
+                    tools:ignore="HardcodedText,TextContrastCheck"
+                    />
+            </menu>
+        </item>
+    </group>
+
+
+    <item
+        android:title="Servicio mensajeria"
+        tools:ignore="HardcodedText,TextContrastCheck">
+        <menu>
+            <item
+                android:id="@+id/nav_service"
+                android:title="Iniciar / Detener servicio"
+                android:checkable="true"
+                tools:ignore="HardcodedText,TextContrastCheck"
+                />
+        </menu>
+    </item>
+
+
+
+    <item
+        android:title="Cerrar sesion"
+        tools:ignore="HardcodedText,TextContrastCheck">
+        <menu>
+            <item
+                android:id="@+id/nav_sign_off"
+                android:title="Cerrar sesión"
+                android:icon="@drawable/nav_ic_close_session"
+                tools:ignore="HardcodedText,TextContrastCheck"
+                />
+        </menu>
+    </item>
+
+
+
+</menu>

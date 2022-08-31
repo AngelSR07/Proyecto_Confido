@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.grupo3.confido.usercase.home.FragmentHome"
+        android:label="Menú"
+        tools:layout="@layout/fragment_home"
+        />
+
+    <fragment
+        android:id="@+id/nav_contact_list"
+        android:name="com.grupo3.confido.usercase.list_contact.FragmentListContact"
+        android:label="Menú"
+        tools:layout="@layout/fragment_list_contact"
+        />
+
+    <fragment
+        android:id="@+id/nav_configuration"
+        android:name="com.grupo3.confido.usercase.acount.FragmentConfig"
+        android:label="Menú"
+        tools:layout="@layout/fragment_config"
+        />
+
+    <fragment
+        android:id="@+id/nav_recomendations"
+        android:name="com.grupo3.confido.usercase.recomendations.FragmentRecomendations"
+        android:label="Menú"
+        tools:layout="@layout/fragment_recomendations"
+        />
+
+</navigation>
