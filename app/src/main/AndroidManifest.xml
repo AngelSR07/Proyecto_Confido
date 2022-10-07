@@ -6,7 +6,7 @@
     <!-- OBTENER UBICACIÓN PRECISA -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+<!--    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />-->
 
     <!-- ENVIAR MENSAJE -->
     <uses-permission android:name="android.permission.SEND_SMS"/>
@@ -42,6 +42,9 @@
 
         <!-- Indicamos que la clase "Service_Message" es un servicio -->
         <service android:name=".util.backgroundService.Service_Message"/>
+
+        <!-- Indicamos que la clase "Service_Location" es un servicio -->
+        <service android:name=".util.locationService.Service_Location"/>
     </application>
 
 </manifest>
