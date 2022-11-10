@@ -147,19 +147,12 @@ public class Service_Message extends Service {
         Contact c2 = new Contact("Luigui",966230373);
         Contact c3 = new Contact("David",990566533);
         Contact c4 = new Contact("Jean",988478739);
-        /*Contact c2 = new Contact("Gaby",22222);
-        Contact c3 = new Contact("Brenda",33333);
-        Contact c4 = new Contact("Tracy",44444);
-        Contact c5 = new Contact("Mery",55555);*/
+        Contact c = new Contact("Jean",988478739);
 
         rxJava.addContacts(c1);
         rxJava.addContacts(c2);
         rxJava.addContacts(c3);
         rxJava.addContacts(c4);
-        /*rxJava.addContacts(c2);
-        rxJava.addContacts(c3);
-        rxJava.addContacts(c4);
-        rxJava.addContacts(c5);*/
     }
 
 
