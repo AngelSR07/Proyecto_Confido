@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/activity_main.xml" value="0.24722222222222223" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_config.xml" value="0.24722222222222223" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_home.xml" value="0.24722222222222223" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_list_contact.xml" value="0.24722222222222223" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations.xml" value="0.24722222222222223" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_guide.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_info.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_info_dialog_box.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_info_list.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_info_welcome.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_search_help.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_recomendations_search_help_dialog_box.xml" value="0.14629629629629629" />
+        <entry key="..\:/Repos - GitHub/Proyecto_Confido/app/src/main/res/layout/fragment_service.xml" value="0.24722222222222223" />
         <entry key="..\:/Users/ANGEL/AndroidStudioProjects/Confido/app/src/main/res/drawable/background_back_arrow.xml" value="0.2715" />
         <entry key="..\:/Users/ANGEL/AndroidStudioProjects/Confido/app/src/main/res/drawable/background_box_view.xml" value="0.2715" />
         <entry key="..\:/Users/ANGEL/AndroidStudioProjects/Confido/app/src/main/res/drawable/background_box_view_ic_close.xml" value="0.2715" />

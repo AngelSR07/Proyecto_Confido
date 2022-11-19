@@ -5,17 +5,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.IBinder;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.media.VolumeProviderCompat;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
+import com.grupo3.confido.util.locationService.Service_Location;
 import com.grupo3.confido.util.sendMessage.Contact;
 import com.grupo3.confido.util.sendMessage.RxJava;
 
@@ -25,33 +27,38 @@ public class Service_Message extends Service {
     private MediaSessionCompat mediaSessionCompat;
     private int cont;
     private BroadcastReceiver myBroadcast;
+    private BroadcastReceiver locationBroadcast;
     private IntentFilter filter;
     private RxJava rxJava;
+    private String url;
 
-    private FusedLocationProviderClient fusedLocationClient;
-    private LocationRequest locationRequest;
+
+
+
+//    private FusedLocationProviderClient fusedLocationClient;
+//    private LocationRequest locationRequest;
 
 
     //Manejamos todos los componentes al inicio una vez cargada la clase
     @Override
     public void onCreate() {
-        Toast.makeText(this,"El servicio \"Confido\" ha sido creado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "El servicio \"Confido\" ha sido creado", Toast.LENGTH_SHORT).show();
 
-        mediaSessionCompat = new MediaSessionCompat(this,"Service_Message");
+        mediaSessionCompat = new MediaSessionCompat(this, "Service_Message");
 
-        mediaSessionCompat.setPlaybackState(new PlaybackStateCompat.Builder().setState(PlaybackStateCompat.STATE_PLAYING,0,0).build());
+        mediaSessionCompat.setPlaybackState(new PlaybackStateCompat.Builder().setState(PlaybackStateCompat.STATE_PLAYING, 0, 0).build());
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        locationRequest = LocationRequest.create();
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(0);
-        locationRequest.setFastestInterval(0);
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+//        locationRequest = LocationRequest.create();
+//        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//        locationRequest.setInterval(0);
+//        locationRequest.setFastestInterval(0);
 
         rxJava = new RxJava();
         rxJava.addContext(this);
 
-        rxJava.addFused(fusedLocationClient);
-        rxJava.addLocation(locationRequest);
+//        rxJava.addFused(fusedLocationClient);
+//        rxJava.addLocation(locationRequest);
 
         listContact();
     }
@@ -66,6 +73,7 @@ public class Service_Message extends Service {
 
         filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
+
 
         myBroadcast = new BroadcastReceiver() {
             @Override
@@ -82,8 +90,10 @@ public class Service_Message extends Service {
                                 cont++;
 
                                 if(cont == 3){
-                                    rxJava.startEvent();//Iniciamos el proceso asincrono
+
+
                                     cont = 0;
+                                    getLocation();
                                 }
                             }
                         }
@@ -104,8 +114,30 @@ public class Service_Message extends Service {
         registerReceiver(myBroadcast,filter);
 
         return START_STICKY;//Bandera que indica que el servicio se está ejecuntado (1).
+
     }
 
+    private void getLocation() {
+
+        Intent i =new Intent(getBaseContext(),Service_Location.class);
+        startService(i);
+
+        if(locationBroadcast == null){
+            locationBroadcast = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                     url = intent.getExtras().get("userurl")+"";
+                    starService(url);
+                }
+            };
+        }
+        registerReceiver(locationBroadcast,new IntentFilter("location_update"));
+    }
+
+    public void starService(String urlUser){
+        rxJava.startEvent(urlUser);
+    }
 
 
     //Metodo para añadir los contactos a notificar
@@ -115,19 +147,12 @@ public class Service_Message extends Service {
         Contact c2 = new Contact("Luigui",966230373);
         Contact c3 = new Contact("David",990566533);
         Contact c4 = new Contact("Jean",988478739);
-        /*Contact c2 = new Contact("Gaby",22222);
-        Contact c3 = new Contact("Brenda",33333);
-        Contact c4 = new Contact("Tracy",44444);
-        Contact c5 = new Contact("Mery",55555);*/
+        Contact c = new Contact("Jean",988478739);
 
         rxJava.addContacts(c1);
         rxJava.addContacts(c2);
         rxJava.addContacts(c3);
         rxJava.addContacts(c4);
-        /*rxJava.addContacts(c2);
-        rxJava.addContacts(c3);
-        rxJava.addContacts(c4);
-        rxJava.addContacts(c5);*/
     }
 
 
@@ -143,6 +168,7 @@ public class Service_Message extends Service {
         rxJava = null;//Limpiamos la lista de contactos
 
         unregisterReceiver(myBroadcast);
+        unregisterReceiver(locationBroadcast);
         mediaSessionCompat.release();
 
         super.onDestroy();
