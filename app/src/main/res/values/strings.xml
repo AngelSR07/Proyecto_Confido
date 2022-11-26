@@ -4,4 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="login_enter_btn">Ingresar</string>
+    <string name="login_register_btn">Regístrate</string>
+    <string name="register_enter_btn">Registrar</string>
+    <string name="welcome_login_btn">Continuar</string>
+    <item name="txtNombreContacto" type="id" />
+    <item name="txtNumeroContacto" type="id" />
 </resources>

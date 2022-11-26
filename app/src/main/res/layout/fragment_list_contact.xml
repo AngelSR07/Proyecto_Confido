@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DFE0E4"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:id="@+id/fragment_recomend">
+    tools:context=".usercase.list_contact.FragmentListContact"
+    android:id="@+id/fragmentListContact">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +27,8 @@
         app:layout_constraintVertical_bias="0.0">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
@@ -68,250 +71,160 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/box_view"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.85"
-
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.7"
-
         android:padding="10dp"
-
         android:background="@drawable/background_box_view"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintVertical_bias="0.85">
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".usercase.list_contact.FragmentListContact">
 
-            android:padding="10dp"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.07999998">
-
-            <LinearLayout
+            <EditText
+                android:id="@id/txtNombreContacto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="text"
+                android:padding="5dp"
+                android:autofillHints=""
+                tools:ignore="HardcodedText" />
 
-                <TextView
+            <EditText
+                android:id="@id/txtNumeroContacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Número"
+                android:inputType="number"
+                android:padding="5dp"
+                android:maxLength="9"
+                tools:ignore="Autofill,HardcodedText" />
 
-                    android:id="@+id/txtSubMoney"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/icon_add"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="#7972E6"
                     android:padding="5dp"
-
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:text="Agregar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="10sp"
+                    android:title="Add"
+                    app:cornerRadius="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
+                    app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintStart_toStartOf="parent"
-
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.13"
+                    app:showAsAction="always"
+                    tools:ignore="ButtonStyle" />
 
-                    tools:ignore="HardcodedText,TextContrastCheck" />
-
-
-                <TextView
-                    android:id="@+id/txtSubMoney4"
-
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/icon_save"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="#7972E6"
                     android:padding="5dp"
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:text="Guardar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="10sp"
+                    android:title="Save"
+                    app:cornerRadius="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.23000002"
-                    tools:ignore="HardcodedText,TextContrastCheck" />
+                    app:showAsAction="always" />
 
-                <TextView
-                    android:id="@+id/txtSubMoney5"
-
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/icon_delete"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="#7972E6"
                     android:padding="5dp"
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:text="Eliminar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="10sp"
+                    android:title="Delete"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.23000002"
-                    tools:ignore="HardcodedText,TextContrastCheck" />
-
-                <TextView
-                    android:id="@+id/txtSubMoney7"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
-                    android:padding="5dp"
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.23000002"
-                    tools:ignore="HardcodedText,TextContrastCheck" />
-
-                <TextView
-                    android:id="@+id/txtSubMoney8"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
-                    android:padding="5dp"
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.23000002"
-                    tools:ignore="HardcodedText,TextContrastCheck" />
-
-                <TextView
-                    android:id="@+id/txtSubMoney6"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="4dp"
-                    android:drawableLeft="@drawable/login_ic_user"
-
-                    android:drawablePadding="20dp"
-                    android:gravity="center"
-                    android:justificationMode="inter_word"
-                    android:padding="5dp"
-                    android:text="Nombre - 999 999 999"
-                    android:textColor="#7A7A7A"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.77"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.23000002"
-                    tools:ignore="HardcodedText,TextContrastCheck" />
-
-
+                    app:showAsAction="always" />
             </LinearLayout>
 
-        </ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Lista de contactos"
+                tools:ignore="HardcodedText,SpUsage" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbars="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ListView
+                        android:id="@+id/datosContactos"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        tools:ignore="NestedScrolling" />
+                </LinearLayout>
+
+            </ScrollView>
 
 
-        <Button
-            android:id="@+id/btnHelp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        </LinearLayout>
 
-            android:backgroundTint="#7972E6"
-            android:padding="10dp"
 
-            android:text="Agregar"
-            android:textAllCaps="false"
-
-            android:textColor="#fff"
-            android:textSize="20sp"
-            app:cornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintWidth_percent="0.8"
-            tools:ignore="HardcodedText,TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
     <TextView
         android:id="@+id/txtInformation"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="Lista de contactos"
+        android:text="Contactos"
         android:textColor="#FFF"
         android:textSize="22sp"
-
-
         app:layout_constraintBottom_toTopOf="@+id/box_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"

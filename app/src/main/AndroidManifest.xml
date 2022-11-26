@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.grupo3.confido">
-
+    <!-- LLAMAR-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <!-- OBTENER UBICACIÓN PRECISA -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -26,6 +27,18 @@
         android:theme="@style/Theme.Confido"
         tools:targetApi="31">
         <activity
+            android:name=".model.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Confido.NoActionBar"/>
+        <activity
+            android:name=".model.WelcomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Confido.NoActionBar"/>
+        <activity
+            android:name=".model.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Confido.NoActionBar"/>
+        <activity
             android:name=".usercase.menu.Menu"
             android:exported="true"
             android:label="@string/app_name"
@@ -39,7 +52,6 @@
             </intent-filter>
 
         </activity>
-
         <!-- Indicamos que la clase "Service_Message" es un servicio -->
         <service android:name=".util.backgroundService.Service_Message"/>
 

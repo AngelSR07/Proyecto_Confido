@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -27,7 +28,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.grupo3.confido.R;
+import com.grupo3.confido.model.LoginActivity;
+import com.grupo3.confido.model.User;
 import com.grupo3.confido.usercase.acount.FragmentConfig;
 import com.grupo3.confido.usercase.home.FragmentHome;
 import com.grupo3.confido.usercase.list_contact.FragmentListContact;
@@ -73,6 +83,31 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*======== Firebase Authentication ========*/
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
+        /*======== Firebase User's stances ========*/
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("users")
+                .child(currentUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
 
         /*
@@ -208,6 +243,15 @@ public class Menu extends AppCompatActivity implements NavigationView.OnNavigati
                 fragmentTransaction.replace(R.id.nav_fragment_content_main, new Fragment_Service())
                         .addToBackStack(null);
                 selectedItem(item);
+                break;
+
+            case R.id.nav_sign_off:
+
+                FirebaseAuth.getInstance().signOut();
+                Intent logoutIntent = new Intent(this, LoginActivity.class);
+                startActivity(logoutIntent);
+                finish();
+
                 break;
 
         }
