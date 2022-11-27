@@ -1,5 +1,6 @@
 package com.grupo3.confido.util.backgroundService;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -44,9 +45,11 @@ public class Service_Message extends Service {
     private String url;
 
 
+    private LocationManager locationManager;
+    private Location location;
+
     //Atributos - Base de Datos
     FirebaseDatabase firebaseDatabase;
-
     DatabaseReference databaseReference;
 
 
@@ -58,6 +61,8 @@ public class Service_Message extends Service {
     @Override
     public void onCreate() {
         inicializarFirebase();
+
+
 
         Toast.makeText(this, "El servicio \"Confido\" ha sido creado", Toast.LENGTH_SHORT).show();
 
@@ -73,7 +78,7 @@ public class Service_Message extends Service {
 
         rxJava = new RxJava();
         rxJava.addContext(this);
-
+        listContact();
 //        rxJava.addFused(fusedLocationClient);
 //        rxJava.addLocation(locationRequest);
 
@@ -84,9 +89,14 @@ public class Service_Message extends Service {
 
 
     //Permite iniciar el servicio en segundo plano
+    @SuppressLint("MissingPermission")
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //Toast.makeText(this,"Servicio inciado " + startId, Toast.LENGTH_SHORT).show();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        url = "https://maps.google.com/?q="+location.getLatitude()+","+location.getLongitude();
 
         filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
@@ -97,6 +107,7 @@ public class Service_Message extends Service {
             public void onReceive(Context context, Intent intent) {
                 //Si la pantalla se encuentra suspendida o apagada
                 if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
+
                     VolumeProviderCompat myVolumenProvider = new VolumeProviderCompat(VolumeProviderCompat.VOLUME_CONTROL_RELATIVE,50,50) {
                         @Override
                         public void onAdjustVolume(int direction) {
@@ -108,9 +119,8 @@ public class Service_Message extends Service {
 
                                 if(cont == 3){
                                     cont = 0;
-
-                                    listContact();
-                                    rxJava.startEvent("Hola");
+                                    //Log.e("Prueba", "HolaMundo");
+                                    rxJava.startEvent(url);
                                     //getLocation(); --> GENERA EL BUCLE
                                 }
                             }
@@ -121,7 +131,7 @@ public class Service_Message extends Service {
                     mediaSessionCompat.setActive(true);
 
                 } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
-                    //Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
                     mediaSessionCompat.release();
                     cont = 0;
                 }

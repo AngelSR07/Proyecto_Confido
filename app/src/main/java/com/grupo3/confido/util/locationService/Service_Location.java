@@ -62,7 +62,6 @@ public class Service_Location extends Service {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,locationListener);
     }
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
