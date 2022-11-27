@@ -1,5 +1,8 @@
-package com.grupo3.confido.usercase.recomendations;
+package com.grupo3.confido.usercase.recomendations.info;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,40 +15,40 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.grupo3.confido.R;
-import com.grupo3.confido.usercase.recomendations.guide.FragmentGuide;
-import com.grupo3.confido.usercase.recomendations.info.FragmentInfo;
-import com.grupo3.confido.usercase.recomendations.info.FragmentInformation;
-import com.grupo3.confido.usercase.recomendations.search_help.FragmentSearchHelp;
+import com.grupo3.confido.usercase.recomendations.FragmentRecomendations;
 
-public class FragmentRecomendations extends Fragment implements FragmentChange {
+public class FragmentInformation extends Fragment {
+
+    //Atributo
+    Activity Act;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Act = getActivity();
+
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_recomendations, container, false);
+        View root = inflater.inflate(R.layout.fragment_information, container, false);
 
-        Button btninfo = root.findViewById(R.id.btnInformation);
-        btninfo.setOnClickListener(view -> goToNewFragment());
+        Button btntypeInfo = root.findViewById(R.id.btnTypeInfo);
+        btntypeInfo.setOnClickListener(view -> goToNewFragment());
 
-        Button btnQuestion = root.findViewById(R.id.btnGuide);
-        btnQuestion.setOnClickListener(view -> goToNewFragment2());
+        Button btnCases = root.findViewById(R.id.btnCasesOfViolence);
+        btnCases.setOnClickListener(view -> goToNewFragment2());
 
-        Button btnhelp = root.findViewById(R.id.btnHelp);
-        btnhelp.setOnClickListener(view -> goToNewFragmentHelp());
+        Button btnBack = root.findViewById(R.id.btnBackViewInfo);
+        btnBack.setOnClickListener(view -> goToBack() );
 
         return root;
     }
 
-
-
-    @Override
     public void goToNewFragment() {
         //requireActivity() --> Metodo que nos permite hacer referencia a la actividad actual y se asegura que dicha referencia no sea nulo.
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
@@ -53,31 +56,30 @@ public class FragmentRecomendations extends Fragment implements FragmentChange {
         fragmentTransaction.addToBackStack(null);
 
         //                  replace(ID del fragmento a reemplazar (Actual), Nombre de la clase del fragmento a mostrar, null)
-        fragmentTransaction.replace(R.id.fragment_recomend, FragmentInformation.class, null);
+        fragmentTransaction.replace(R.id.fragment_information, FragmentInfo.class, null);
 
         fragmentTransaction.commit();
     }
 
     public void goToNewFragment2() {
+        goUrl("https://www.mimp.gob.pe/omep/estadisticas-atencion-a-la-violencia.php");
+    }
 
-        FragmentGuide fragmentGuide = new FragmentGuide();
-
-        fragmentGuide.viewDialogWelcome(getContext(), getLayoutInflater());
-
+    public void goUrl(String url){
+        Uri link= Uri.parse(url);
+        Intent i=new Intent(Intent.ACTION_VIEW,link);
+        Act.startActivity(i);
     }
 
 
-    public void goToNewFragmentHelp() {
-        //requireActivity() --> Metodo que nos permite hacer referencia a la actividad actual y se asegura que dicha referencia no sea nulo.
+    public void goToBack() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
 
-        //                  replace(ID del fragmento a reemplazar (Actual), Nombre de la clase del fragmento a mostrar, null)
+        fragmentTransaction.replace(R.id.fragment_information, FragmentRecomendations.class, null);
 
-        fragmentTransaction.replace(R.id.fragment_recomend, FragmentSearchHelp.class, null);
-
-        fragmentTransaction.commit();
+        fragmentTransaction.remove(FragmentInformation.this).commit();
     }
 
 
@@ -85,6 +87,4 @@ public class FragmentRecomendations extends Fragment implements FragmentChange {
     public void onDestroyView() {
         super.onDestroyView();
     }
-
-
 }

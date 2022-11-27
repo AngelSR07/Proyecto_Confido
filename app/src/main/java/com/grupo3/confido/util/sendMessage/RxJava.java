@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.telephony.SmsManager;
 import android.util.Log;
+
+import com.grupo3.confido.usercase.list_contact.Contacto;
+
 import java.util.ArrayList;
 import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -17,7 +20,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class RxJava {
 
     private Disposable disposable;
-    private final List<Contact> contacts;
+    private final List<Contacto> contacts;
 
     //MENSAJE
     private String messageHelp;
@@ -32,7 +35,7 @@ public class RxJava {
     }
 
 
-    public void addContacts(Contact c) {
+    public void addContacts(Contacto c) {
         contacts.add(c);
     }
 
@@ -48,7 +51,7 @@ public class RxJava {
 
     public void startEvent(String url) {
         userURL = url;
-        Observable<Contact> observable = Observable.fromIterable(contacts);
+        Observable<Contacto> observable = Observable.fromIterable(contacts);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -56,15 +59,15 @@ public class RxJava {
 
     }
 
-    private Observer<Contact> createObserver() {
-        return new Observer<Contact>() {
+    private Observer<Contacto> createObserver() {
+        return new Observer<Contacto>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 disposable = d;
             }
 
             @Override
-            public void onNext(Contact c) {
+            public void onNext(Contacto c) {
                 sendMessage(c);
             }
 
@@ -78,9 +81,9 @@ public class RxJava {
         };
     }
 
-    private void sendMessage(Contact c) {
+    private void sendMessage(Contacto c) {
         //Implementar lógica de enviar mensaje
-        Log.e("Mensaje", "El mensaje se ha enviado al número: " + c.getNumContact());
+        Log.e("Mensaje", "El mensaje se ha enviado al número: " + c.getNumber());
 
         //getLocation();
 
@@ -91,7 +94,7 @@ public class RxJava {
                 messageHelp = "Eres mi contacto de emergencia. ¡NECESITO AYUDA!. Está es mi ubicación actual: " + userURL + "\n" +
                         "Nota: Recuerde que la persona que necesita ayuda posiblemente no pueda contestar o regresar su llamada.";
 
-                smsConfido(String.valueOf(c.getNumContact()));
+                smsConfido(String.valueOf(c.getNumber()));
 
                 Log.e("URL", messageHelp);
 

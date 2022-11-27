@@ -14,12 +14,23 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.media.VolumeProviderCompat;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.grupo3.confido.usercase.list_contact.Contacto;
 import com.grupo3.confido.util.locationService.Service_Location;
 import com.grupo3.confido.util.sendMessage.Contact;
 import com.grupo3.confido.util.sendMessage.RxJava;
+
+import java.util.Objects;
 
 public class Service_Message extends Service {
 
@@ -27,12 +38,16 @@ public class Service_Message extends Service {
     private MediaSessionCompat mediaSessionCompat;
     private int cont;
     private BroadcastReceiver myBroadcast;
-    private BroadcastReceiver locationBroadcast;
+    //private BroadcastReceiver locationBroadcast; --- GENERA ERROR DEL BUCLE
     private IntentFilter filter;
     private RxJava rxJava;
     private String url;
 
 
+    //Atributos - Base de Datos
+    FirebaseDatabase firebaseDatabase;
+
+    DatabaseReference databaseReference;
 
 
 //    private FusedLocationProviderClient fusedLocationClient;
@@ -42,6 +57,8 @@ public class Service_Message extends Service {
     //Manejamos todos los componentes al inicio una vez cargada la clase
     @Override
     public void onCreate() {
+        inicializarFirebase();
+
         Toast.makeText(this, "El servicio \"Confido\" ha sido creado", Toast.LENGTH_SHORT).show();
 
         mediaSessionCompat = new MediaSessionCompat(this, "Service_Message");
@@ -60,7 +77,7 @@ public class Service_Message extends Service {
 //        rxJava.addFused(fusedLocationClient);
 //        rxJava.addLocation(locationRequest);
 
-        listContact();
+
     }
 
 
@@ -90,10 +107,11 @@ public class Service_Message extends Service {
                                 cont++;
 
                                 if(cont == 3){
-
-
                                     cont = 0;
-                                    getLocation();
+
+                                    listContact();
+                                    rxJava.startEvent("Hola");
+                                    //getLocation(); --> GENERA EL BUCLE
                                 }
                             }
                         }
@@ -103,7 +121,7 @@ public class Service_Message extends Service {
                     mediaSessionCompat.setActive(true);
 
                 } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
-                    Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
                     mediaSessionCompat.release();
                     cont = 0;
                 }
@@ -116,7 +134,7 @@ public class Service_Message extends Service {
         return START_STICKY;//Bandera que indica que el servicio se está ejecuntado (1).
 
     }
-
+/*    ===================================== GENERA EL ERROR DEL BUCLE ====================
     private void getLocation() {
 
         Intent i =new Intent(getBaseContext(),Service_Location.class);
@@ -139,20 +157,33 @@ public class Service_Message extends Service {
         rxJava.startEvent(urlUser);
     }
 
+     ===================================== GENERA EL ERROR DEL BUCLE ====================*/
+
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(this.getBaseContext());
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        //  databaseReference=firebaseDatabase.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        databaseReference=firebaseDatabase.getReference("users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()));
+    }
+
 
     //Metodo para añadir los contactos a notificar
     private void listContact(){
 
-        Contact c1 = new Contact("Angel",918764904);
-        Contact c2 = new Contact("Luigui",966230373);
-        Contact c3 = new Contact("David",990566533);
-        Contact c4 = new Contact("Jean",988478739);
-        Contact c = new Contact("Jean",988478739);
+        databaseReference.child("Contacto").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                    Contacto c =objSnapshot.getValue(Contacto.class);
+                    rxJava.addContacts(c);
+                }
+            }
 
-        rxJava.addContacts(c1);
-        rxJava.addContacts(c2);
-        rxJava.addContacts(c3);
-        rxJava.addContacts(c4);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 
@@ -168,7 +199,7 @@ public class Service_Message extends Service {
         rxJava = null;//Limpiamos la lista de contactos
 
         unregisterReceiver(myBroadcast);
-        unregisterReceiver(locationBroadcast);
+        //unregisterReceiver(locationBroadcast); --- GENERA ERROR
         mediaSessionCompat.release();
 
         super.onDestroy();

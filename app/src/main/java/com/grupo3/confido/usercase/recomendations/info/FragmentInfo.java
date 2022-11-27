@@ -80,7 +80,7 @@ public class FragmentInfo extends Fragment implements FragmentViewDate, Fragment
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
 
-        fragmentTransaction.replace(R.id.fragment_recomend_info, FragmentRecomendations.class, null);
+        fragmentTransaction.replace(R.id.fragment_recomend_info, FragmentInformation.class, null);
 
         fragmentTransaction.remove(FragmentInfo.this).commit();
     }

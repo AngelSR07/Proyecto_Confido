@@ -141,7 +141,7 @@
             app:layout_constraintHorizontal_bias="0.43"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.600"
+            app:layout_constraintVertical_bias="0.59000003"
             tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
 
         <EditText
@@ -164,7 +164,7 @@
             app:layout_constraintHorizontal_bias="0.443"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.230"
+            app:layout_constraintVertical_bias="0.23000002"
             tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
 
         <EditText
@@ -188,7 +188,7 @@
             app:layout_constraintHorizontal_bias="0.443"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.350"
+            app:layout_constraintVertical_bias="0.38"
             tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
 
         <EditText
@@ -212,7 +212,7 @@
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.750"
+            app:layout_constraintVertical_bias="0.76"
             tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck" />
 
         <Button
@@ -231,7 +231,7 @@
             app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.914"
+            app:layout_constraintVertical_bias="0.97"
             tools:ignore="DuplicateSpeakableTextCheck,MissingConstraints,TextContrastCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
