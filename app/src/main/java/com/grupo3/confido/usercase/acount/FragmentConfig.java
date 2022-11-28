@@ -33,7 +33,8 @@ public class FragmentConfig extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     Context context;
-    User u;
+    //User u;
+    private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class FragmentConfig extends Fragment {
         lastName= view.findViewById(R.id.modify_surname_input);
         email= view.findViewById(R.id.modify_email_input);
         nickName= view.findViewById(R.id.modify_nickname_input);
+        mAuth = FirebaseAuth.getInstance();
         Button btnSave= (Button)view.findViewById(R.id.modify_enter_btn);
 
 
@@ -102,9 +104,9 @@ public class FragmentConfig extends Fragment {
         c.setEmail(email.getText().toString().trim());
         c.setNickName(nickName.getText().toString().trim());
         databaseReference.setValue(c);
+        mAuth.getCurrentUser().updateEmail(email.getText().toString().trim());
         Toast.makeText(getContext(), "Actualizado", Toast.LENGTH_LONG).show();
         //mostrar();
-
 
     }
 

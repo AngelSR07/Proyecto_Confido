@@ -62,13 +62,9 @@ public class Service_Message extends Service {
     public void onCreate() {
         inicializarFirebase();
 
-
-
         Toast.makeText(this, "El servicio \"Confido\" ha sido creado", Toast.LENGTH_SHORT).show();
 
         mediaSessionCompat = new MediaSessionCompat(this, "Service_Message");
-
-        mediaSessionCompat.setPlaybackState(new PlaybackStateCompat.Builder().setState(PlaybackStateCompat.STATE_PLAYING, 0, 0).build());
 
 //        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 //        locationRequest = LocationRequest.create();
@@ -102,44 +98,53 @@ public class Service_Message extends Service {
         filter.addAction(Intent.ACTION_SCREEN_ON);
 
 
-        myBroadcast = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                //Si la pantalla se encuentra suspendida o apagada
-                if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
+        if(myBroadcast == null){
+            myBroadcast = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if(!mediaSessionCompat.isActive()){
+                        mediaSessionCompat = new MediaSessionCompat(getBaseContext(), "Service_Message");
+                    }
 
-                    VolumeProviderCompat myVolumenProvider = new VolumeProviderCompat(VolumeProviderCompat.VOLUME_CONTROL_RELATIVE,50,50) {
-                        @Override
-                        public void onAdjustVolume(int direction) {
-                            //Si presiona el boton "Volumen +"
-                            // <0 volume down
-                            // >0 volume up
-                            if(direction > 0){
-                                cont++;
+                    mediaSessionCompat.setPlaybackState(new PlaybackStateCompat.Builder().setState(PlaybackStateCompat.STATE_PLAYING, 0, 0).build());
 
-                                if(cont == 3){
-                                    cont = 0;
-                                    //Log.e("Prueba", "HolaMundo");
-                                    rxJava.startEvent(url);
-                                    //getLocation(); --> GENERA EL BUCLE
+                    //Si la pantalla se encuentra suspendida o apagada
+                    if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
+                        VolumeProviderCompat myVolumenProvider = new VolumeProviderCompat(VolumeProviderCompat.VOLUME_CONTROL_RELATIVE,50,50) {
+                            @Override
+                            public void onAdjustVolume(int direction) {
+                                //Si presiona el boton "Volumen +"
+                                // <0 volume down
+                                // >0 volume up
+                                if(direction > 0){
+                                    cont++;
+
+                                    if(cont == 3){
+                                        cont = 0;
+                                        Log.e("Prueba", "HolaMundo");
+                                        rxJava.startEvent(url);
+                                        //getLocation(); --> GENERA EL BUCLE
+                                    }
                                 }
                             }
+                        };
+
+                        mediaSessionCompat.setPlaybackToRemote(myVolumenProvider);
+                        mediaSessionCompat.setActive(true);
+
+                    } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+                        Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
+                        if(mediaSessionCompat.isActive()){
+                            //mediaSessionCompat.release();
                         }
-                    };
+                        cont = 0;
+                    }
 
-                    mediaSessionCompat.setPlaybackToRemote(myVolumenProvider);
-                    mediaSessionCompat.setActive(true);
-
-                } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
-                    Toast.makeText(Service_Message.this,"Se prendio la pantalla en 2do plano :D", Toast.LENGTH_LONG).show();
-                    mediaSessionCompat.release();
-                    cont = 0;
                 }
+            };
 
-            }
-        };
-
-        registerReceiver(myBroadcast,filter);
+            registerReceiver(myBroadcast,filter);
+        }
 
         return START_STICKY;//Bandera que indica que el servicio se está ejecuntado (1).
 
